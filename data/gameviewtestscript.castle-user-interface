@@ -111,6 +111,109 @@
                 "SkipTimeInMSec" : 0.0000000000000000E+000
               }
             ]
+          },
+          {
+            "$$ClassName" : "TCastlePlane",
+            "Axis" : 2,
+            "ColorPersistent" : {
+              "$$ClassName" : "TCastleColorPersistent",
+              "Green" : 6.1568629741668701E-001,
+              "Red" : 4.1176471114158630E-001
+            },
+            "Material" : "pmUnlit",
+            "Name" : "Plane3",
+            "RenderOptions" : {
+              "$$ClassName" : "TCastleScene.TSceneRenderOptions"
+            },
+            "SizePersistent" : {
+              "$$ClassName" : "TCastleVector2Persistent",
+              "X" : 2.0000000000000000E+002,
+              "Y" : 2.0000000000000000E+002
+            },
+            "TranslationPersistent" : {
+              "$$ClassName" : "TCastleVector3Persistent",
+              "X" : 4.3255816650390625E+002
+            },
+            "$Behaviors" : [
+              {
+                "$$ClassName" : "TBehaviorScript",
+                "Name" : "BehaviorScript4",
+                "Script" : [
+                  "// Init variables",
+                  "angle = 0",
+                  "v = translation_get()",
+                  "vx = 1",
+                  "vy = 0",
+                  "radius = 150",
+                  "",
+                  "warn('This will rotate the box around it\\'s position, with radius = ${radius}')",
+                  "// Print the name of this behavior to Warning tab",
+                  "warn('The name of this behavior: ${name}')",
+                  "// Print storage (shared data between behavior scripts) to Warning tab",
+                  "storage = get(name)",
+                  "warn('Storage: ${storage}')",
+                  "",
+                  "// This function is called by behavior's Update function",
+                  "fn update(delta) {",
+                  "  angle += 4 * delta",
+                  "  s = sin(angle)",
+                  "  c = cos(angle)",
+                  "  ",
+                  "  x = vx * c - vy * s",
+                  "  y = vx * s + vy * c",
+                  "",
+                  "  translation_set(v.x + x * radius, v.y + y * radius, v.z)",
+                  "  rotation_set(0, 0, 1, angle)",
+                  "",
+                  "  return (false)",
+                  "}",
+                  "",
+                  "// Destroy function, call when behavior is destroyed",
+                  "fn destroy() {",
+                  "  // We do nothing for now",
+                  "}",
+                  ""
+                ],
+                "SkipTimeInMSec" : 0.0000000000000000E+000
+              }
+            ]
+          },
+          {
+            "$$ClassName" : "TCastlePlane",
+            "Axis" : 2,
+            "ColorPersistent" : {
+              "$$ClassName" : "TCastleColorPersistent",
+              "Blue" : 3.6470589041709900E-001,
+              "Green" : 4.8235294222831726E-001
+            },
+            "Material" : "pmUnlit",
+            "Name" : "Plane2",
+            "RenderOptions" : {
+              "$$ClassName" : "TCastleScene.TSceneRenderOptions"
+            },
+            "SizePersistent" : {
+              "$$ClassName" : "TCastleVector2Persistent",
+              "X" : 2.0000000000000000E+002,
+              "Y" : 2.0000000000000000E+002
+            },
+            "TranslationPersistent" : {
+              "$$ClassName" : "TCastleVector3Persistent",
+              "X" : -4.4825579833984375E+002
+            },
+            "$Behaviors" : [
+              {
+                "$$ClassName" : "TBehaviorScript",
+                "Name" : "BehaviorScript2",
+                "Script" : [
+                  "fn update(delta) {",
+                  "  v = translation_get()",
+                  "  v.x += 200 * delta",
+                  "  translation_set(v.x, v.y, v.z)",
+                  "}"
+                ],
+                "SkipTimeInMSec" : 0.0000000000000000E+000
+              }
+            ]
           }
         ]
       },
