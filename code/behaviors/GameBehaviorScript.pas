@@ -268,7 +268,10 @@ begin
     Self.FLastTicks := Self.FCurTicks;
   {$endif}
   //
-  Self.FCurTicks := Self.FCurTicks + Round(SecondsPassed * 1000);
+  {$ifdef CASTLE_DESIGN_MODE}
+  if InternalCastleApplicationMode = appSimulation then
+  {$endif}
+    Self.FCurTicks := Self.FCurTicks + Round(SecondsPassed * 1000);
   if IsRemoved then
     RemoveMe := rtRemoveAndFree;
 end;
