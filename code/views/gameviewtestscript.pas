@@ -34,7 +34,7 @@ begin
   { Executed once when view starts. }
 end;
 
-procedure TViewTestPhysics.Update(const SecondsPassed: Single; var HandleInput: boolean);
+procedure TViewTestScript.Update(const SecondsPassed: Single; var HandleInput: boolean);
 begin
   inherited;
   { Executed every frame. }
