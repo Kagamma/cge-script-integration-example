@@ -1,0 +1,160 @@
+{
+  "$$ClassName" : "TCastleUserInterface",
+  "FullSize" : true,
+  "Name" : "RootGroup",
+  "$Children" : [
+    {
+      "$$ClassName" : "TCastleViewport",
+      "BackgroundColorPersistent" : {
+        "$$ClassName" : "TCastleColorPersistent",
+        "Blue" : 2.5000000000000000E-001,
+        "Green" : 2.5000000000000000E-001,
+        "Red" : 2.5000000000000000E-001
+      },
+      "Camera" : "Camera1",
+      "FullSize" : true,
+      "Items" : {
+        "$$ClassName" : "TCastleRootTransform",
+        "PhysicsProperties" : {
+          "$$ClassName" : "TPhysicsProperties",
+          "LayerCollisions" : {
+            "$$ClassName" : "TCastleLayerCollisions"
+          },
+          "LayerNames" : {
+            "$$ClassName" : "TCastleLayerNames"
+          }
+        },
+        "$Children" : [
+          {
+            "$$ClassName" : "TCastleCamera",
+            "Name" : "Camera1",
+            "Orthographic" : {
+              "$$ClassName" : "TCastleOrthographic",
+              "Height" : 1.0000000000000000E+003,
+              "OriginPersistent" : {
+                "$$ClassName" : "TCastleVector2Persistent",
+                "X" : 5.0000000000000000E-001,
+                "Y" : 5.0000000000000000E-001
+              }
+            },
+            "Perspective" : {
+              "$$ClassName" : "TCastlePerspective"
+            },
+            "ProjectionType" : "ptOrthographic",
+            "RotationPersistent" : {
+              "$$ClassName" : "TCastleVector4RotationPersistent",
+              "Z" : 1.0000000000000000E+000
+            },
+            "TranslationPersistent" : {
+              "$$ClassName" : "TCastleVector3Persistent",
+              "Z" : 5.0000000000000000E+002
+            }
+          },
+          {
+            "$$ClassName" : "TCastlePlane",
+            "Axis" : 2,
+            "ColorPersistent" : {
+              "$$ClassName" : "TCastleColorPersistent",
+              "Green" : 6.1568629741668701E-001,
+              "Red" : 4.1176471114158630E-001
+            },
+            "Material" : "pmUnlit",
+            "Name" : "Plane1",
+            "RenderOptions" : {
+              "$$ClassName" : "TCastleScene.TSceneRenderOptions"
+            },
+            "SizePersistent" : {
+              "$$ClassName" : "TCastleVector2Persistent",
+              "X" : 2.0000000000000000E+002,
+              "Y" : 2.0000000000000000E+002
+            },
+            "$Behaviors" : [
+              {
+                "$$ClassName" : "TBehaviorScript",
+                "Name" : "BehaviorScript1",
+                "Script" : [
+                  "// Init variables",
+                  "angle = 0",
+                  "v = translation_get()",
+                  "vx = 1",
+                  "vy = 0",
+                  "radius = 150",
+                  "",
+                  "warn('This will rotate the box around it\\'s position, with radius = ${radius}')",
+                  "// Print the name of this behavior to Warning tab",
+                  "warn('The name of this behavior: ${name}')",
+                  "// Print storage (shared data between behavior scripts) to Warning tab",
+                  "storage = get(name)",
+                  "warn('Storage: ${storage}')",
+                  "",
+                  "// This function is called by behavior's Update function",
+                  "fn update(delta) {",
+                  "  angle += 2 * delta",
+                  "  s = sin(angle)",
+                  "  c = cos(angle)",
+                  "  ",
+                  "  x = vx * c - vy * s",
+                  "  y = vx * s + vy * c",
+                  "",
+                  "  translation_set(v.x + x * radius, v.y + y * radius, v.z)",
+                  "  rotation_set(0, 0, 1, angle)",
+                  "",
+                  "  return (false)",
+                  "}",
+                  "",
+                  "// Destroy function, call when behavior is destroyed",
+                  "fn destroy() {",
+                  "  // We do nothing for now",
+                  "}",
+                  ""
+                ],
+                "SkipTimeInMSec" : 0.0000000000000000E+000
+              }
+            ]
+          }
+        ]
+      },
+      "Name" : "Viewport1",
+      "InternalDesignCamera" : {
+        "$$ClassName" : "TCastleCamera",
+        "Name" : "",
+        "Orthographic" : {
+          "$$ClassName" : "TCastleOrthographic",
+          "Height" : 1.2000000000000000E+003,
+          "OriginPersistent" : {
+            "$$ClassName" : "TCastleVector2Persistent",
+            "X" : 5.0000000000000000E-001,
+            "Y" : 5.0000000000000000E-001
+          }
+        },
+        "Perspective" : {
+          "$$ClassName" : "TCastlePerspective"
+        },
+        "ProjectionType" : "ptOrthographic",
+        "RotationPersistent" : {
+          "$$ClassName" : "TCastleVector4RotationPersistent",
+          "Z" : 1.0000000000000000E+000
+        },
+        "TranslationPersistent" : {
+          "$$ClassName" : "TCastleVector3Persistent",
+          "Z" : 6.0000000000000000E+002
+        }
+      },
+      "InternalDesignNavigationType" : 2,
+      "InternalDesignNavigations[dnFly]" : {
+        "$$ClassName" : "TCastleWalkNavigationDesign",
+        "Exists" : false,
+        "Name" : ""
+      },
+      "InternalDesignNavigations[dnExamine]" : {
+        "$$ClassName" : "TCastleExamineNavigationDesign",
+        "Exists" : false,
+        "Name" : ""
+      },
+      "InternalDesignNavigations[dn2D]" : {
+        "$$ClassName" : "TCastle2DNavigationDesign",
+        "Name" : ""
+      }
+    }
+  ]
+}
