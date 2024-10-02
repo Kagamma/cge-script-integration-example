@@ -188,7 +188,7 @@ function TBehaviorScript.SEScaleGet(const VM: TSEVM; const Args: array of TSEVal
 var
   V: TVector3;
 begin
-  V := Self.Parent.Direction;
+  V := Self.Parent.Scale;
   GC.AllocMap(@Result);
   SEMapSet(Result, 'x', V.X);
   SEMapSet(Result, 'y', V.Y);
